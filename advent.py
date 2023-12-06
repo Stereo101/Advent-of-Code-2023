@@ -51,12 +51,10 @@ class Session(requests.Session):
     def problem(self) -> str:
         return self.get(f'{self.url}/input').text
 
-    def fp(self,BIGBOY=False):
+    def fp(self):
         if(not os.path.exists(self.fname)):
             with open(self.fname,"w") as f:
                 f.write(self.problem())
-        if(BIGBOY):
-            return open("bigboy.txt")
         return open(self.fname,"r")
         
     def check_solved(self,level,answer):
